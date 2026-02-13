@@ -53,6 +53,7 @@ type providerServer struct {
 	planResourceChangeCalled  bool
 	applyResourceChangeCalled bool
 	listResourceCalled        bool
+	writeStateBytesCalled     bool
 }
 
 func (p *providerServer) PlanResourceChange(ctx context.Context, req *proto.PlanResourceChange_Request) (*proto.PlanResourceChange_Response, error) {
@@ -85,6 +86,7 @@ func (p *providerServer) PlanResourceChangeCalled() bool {
 
 	return p.planResourceChangeCalled
 }
+
 func (p *providerServer) ResetPlanResourceChangeCalled() {
 	p.Lock()
 	defer p.Unlock()
@@ -98,6 +100,7 @@ func (p *providerServer) ApplyResourceChangeCalled() bool {
 
 	return p.applyResourceChangeCalled
 }
+
 func (p *providerServer) ResetApplyResourceChangeCalled() {
 	p.Lock()
 	defer p.Unlock()
@@ -151,6 +154,7 @@ func (p *providerServer5) PlanResourceChangeCalled() bool {
 
 	return p.planResourceChangeCalled
 }
+
 func (p *providerServer5) ResetPlanResourceChangeCalled() {
 	p.Lock()
 	defer p.Unlock()
@@ -164,6 +168,7 @@ func (p *providerServer5) ApplyResourceChangeCalled() bool {
 
 	return p.applyResourceChangeCalled
 }
+
 func (p *providerServer5) ResetApplyResourceChangeCalled() {
 	p.Lock()
 	defer p.Unlock()
